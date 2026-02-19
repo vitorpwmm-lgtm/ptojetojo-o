@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zoê - Login</title>
+<style>
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#e5e7eb;
+  display:flex;
+  justify-content:center;
+}
+.phone{
+  width:100%;
+  max-width:420px;
+  min-height:100vh;
+  background:#ffffff;
+  padding:24px;
+}
+h1{margin-top:0}
+p{color:#555}
+.tabs{
+  display:flex;
+  gap:8px;
+  margin:16px 0;
+}
+.tab{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid #ddd;
+  background:#eee;
+  cursor:pointer;
+}
+.tab.active{
+  background:#22c55e;
+  color:#fff;
+  border-color:#22c55e;
+}
+input{
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid #ddd;
+  margin-bottom:10px;
+}
+.btn{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  background:#f97316;
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+}
+.btn.secondary{
+  background:#e5e7eb;
+  color:#111;
+  margin-top:10px;
+}
+.hidden{display:none}
+.back{
+  color:#22c55e;
+  cursor:pointer;
+  margin-bottom:10px;
+  display:inline-block;
+}
+</style>
+</head>
+<body>
+
+<div class="phone">
+
+<!-- LOGIN -->
+<div id="login">
+  <h1>Olá, bem-vindo(a) ao Zoê!</h1>
+  <p>Apadrinhe famílias no Marajó e ajude a transformar vidas!</p>
+
+  <h3>Entrar no Zoê</h3>
+  <div class="tabs">
+    <button class="tab active" onclick="setTab(this)">Família</button>
+    <button class="tab" onclick="setTab(this)">Padrinho</button>
+    <button class="tab" onclick="setTab(this)">Instituição</button>
+  </div>
+
+  <input placeholder="Email">
+  <input type="password" placeholder="Senha">
+
+  <button class="btn" onclick="entrar()">Entrar</button>
+  <button class="btn secondary" onclick="abrirCadastro()">Criar conta</button>
+</div>
+
+<!-- CADASTRO -->
+<div id="cadastro" class="hidden">
+  <span class="back" onclick="voltarLogin()">← Voltar</span>
+  <h3>Criar conta</h3>
+
+  <input placeholder="Nome completo">
+  <input placeholder="Email">
+  <input type="password" placeholder="Senha">
+  <input type="password" placeholder="Confirmar senha">
+
+  <button class="btn" onclick="finalizarCadastro()">Cadastrar</button>
+</div>
+
+</div>
+
+<script>
+function setTab(el){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+}
+function abrirCadastro(){
+  document.getElementById('login').classList.add('hidden');
+  document.getElementById('cadastro').classList.remove('hidden');
+}
+function voltarLogin(){
+  document.getElementById('cadastro').classList.add('hidden');
+  document.getElementById('login').classList.remove('hidden');
+}
+function finalizarCadastro(){
+  alert("Cadastro realizado com sucesso! Faça login.");
+  voltarLogin();
+}
+function entrar(){
+  // redireciona para o app pronto (não altera nada nele)
+  window.location.href = "app.html";
+}
+</script>
+
+</body>
+</html>
